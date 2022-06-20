@@ -9,3 +9,5 @@
 
 - [ ] Verify if the columns before the column that the algorithm wants to zero is equals to 0, or else that line can't be used by the program to zero the value
 - [ ] Priorize the number one, so, try to find the number one correspondent to the column that the algorithm wants to zero; Or else, just find any value that is different from 0
+
+- [ ] Replace the result and find the values

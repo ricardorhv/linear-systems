@@ -1,21 +1,20 @@
 const system = [
-  [5, 0, 0, 2, -5, 1],
   [1, -1, -1, 0, 0, 0],
-  [-1, 2, 4, 16, 0, 5],
-  [2, 4, 0, 0, 0, 12],
-  [5, -2, 5, 2, 2, 6],
+  [5, 2, 0, 0, 0, 5],
+  [0, -2, 5, 2, 0, 5],
+  [0, 0, 1, -1, -1, 0],
+  [0, 0, 0, 2, -5, 1],
 ]
 /*
 const system = [
   [1, -1, -1, 0,],
   [0, -2, 5, 4,],
   [3, 2, 0, 21,],
-] 
+]
 */ 
 //system[row][col]
 
 // Linha 1 coluna 1 tem que ser um valor diferente de 0  e de preferência 1
-// Fazer uma função que verifique se o resultado pode ser simplificado
 // Substituir os resultados
 
 //ORG-EQ
@@ -43,10 +42,6 @@ function findTheColumnWithMoreZeros() {
     quantityOfZerosByLine.push(countZeros)
   }
   return quantityOfZerosByLine
-}
-
-function getZeroToLowerRow() {
-  
 }
 
 function equation(lineUsed, lineMain) {
@@ -149,7 +144,7 @@ function findTheLinesWithoutZeroBeforeTheCol(line, col) {
   for (let lineSystem = 0; lineSystem < system.length; lineSystem++) {
     itHasZero = false
     count = 0
-    if (system[lineSystem] !== line) {
+    if (system[lineSystem] !== line && system[lineSystem][col] !== 0) {
       for (let index = (col - 1); index >= 0; index--) {
         if (system[lineSystem][index] === 0) {
           count++
@@ -204,8 +199,13 @@ function calculate(line, col) {
   equation(lineUsed, line)
 }
 
+function calcTheResults() {
+  
+}
+
 function showSystem() {
   system.forEach(row => console.log(row))
 }
 showSystem()
 findTheColumnsToZero()
+calcTheResults()
