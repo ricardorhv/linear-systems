@@ -1,17 +1,19 @@
+
+
 const system = [
   [1, -1, -1, 0, 0, 0],
   [5, 2, 0, 0, 0, 5],
   [0, -2, 5, 2, 0, 5],
-  [0, 0, 1, -1, -1, 0],
   [0, 0, 0, 2, -5, 1],
+  [0, 0, 1, -1, -1, 0],
 ]
-/*
-const system = [
-  [1, -1, -1, 0,],
-  [0, -2, 5, 4,],
-  [3, 2, 0, 21,],
-]
-*/ 
+
+// const system = [
+//   [1, -1, -1, 0,],
+//   [0, -2, 5, 4,],
+//   [3, 2, 0, 21,],
+// ]
+const results = []
 //system[row][col]
 
 // Linha 1 coluna 1 tem que ser um valor diferente de 0  e de preferência 1
@@ -110,8 +112,6 @@ function equation(lineUsed, lineMain) {
   })
 }
 
-// equation(system[0], system[2])
-
 function findNumberOne(lines, col) {
   for (let index = 0; index < lines.length; index++) {
 
@@ -172,13 +172,11 @@ function findTheLinesToBeUsed(line, col) {
   return linesToBeUsed
 }
 
-//Find the columns that the algorithm must zero
 function findTheColumnsToZero() {
   let count = 1
   for (let col = 0; col < count; col++) {
     for (let line = count; line < system.length; line++) {
       if (system[line][col] !== 0) {
-        //Found the values that must to be equals zero
         console.log(`Valor a ser zerado: ${system[line][col]}`);
         calculate(system[line], col)
         showSystem()
@@ -199,13 +197,71 @@ function calculate(line, col) {
   equation(lineUsed, line)
 }
 
-function calcTheResults() {
+function calc(valueProps, index, line) {
+  const values = valueProps.values
+  let value
+  let resultFinal
+  let soma = 0
+
+  values.forEach(el => {
+    value = results.find(result => result.index === `i${el.index}`)
+    soma += el.value * value.value
+  })
+  resultFinal = {
+    index: `i${index}`,
+    value: ((soma * -1) + line[0]) / valueProps.valueToFind
+  }
+
+  results.push(resultFinal);
+}
+
+function replaceResult() {
+  system.reverse()
   
+  let count = 1
+  let index = system[0].length
+  let lastValue = system[0][index - 1]
+  let secondLastValue = system[0][index - 2]
+  let resultProps
+  let values
+  let countValueToFind
+  let indexResult = system[0].length - 2
+
+  results.push({
+    index: `i${index - 1}`,
+    value: lastValue / secondLastValue
+  })
+
+  for (let line = 1; line < system.length; line++) {
+    system[line].reverse()
+    values = []
+    countValueToFind = 0
+    for (let col = 1; col <= count; col++) {
+      values.push({
+        index: index - col,
+        value: system[line][col]
+      })
+      countValueToFind++
+    }
+    resultProps = {
+      values: values,
+      valueToFind: system[line][countValueToFind + 1]
+    }
+    calc(resultProps, indexResult, system[line])
+    indexResult--
+    if(count !== system.length - 1) 
+    count++
+  }
 }
 
 function showSystem() {
   system.forEach(row => console.log(row))
 }
+
+function showResults() {
+  replaceResult()
+  results.forEach(result => console.log(`${result.index} = ${result.value}`))
+}
 showSystem()
 findTheColumnsToZero()
-calcTheResults()
+showResults()
