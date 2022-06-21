@@ -1,49 +1,13 @@
+let system = []
+let results = []
 
-
-const system = [
-  [1, -1, -1, 0, 0, 0],
-  [5, 2, 0, 0, 0, 5],
-  [0, -2, 5, 2, 0, 5],
-  [0, 0, 0, 2, -5, 1],
-  [0, 0, 1, -1, -1, 0],
-]
-
-// const system = [
-//   [1, -1, -1, 0,],
-//   [0, -2, 5, 4,],
-//   [3, 2, 0, 21,],
-// ]
-const results = []
-//system[row][col]
-
-// Linha 1 coluna 1 tem que ser um valor diferente de 0  e de preferência 1
-// Substituir os resultados
-
-//ORG-EQ
-function verifyTheFirstColumn() {
-  if (system[0][0] === 0) {
-    for (let index = system.length-1; index > 0; index--) {
-      if ( system[index][0] === 1 ) {
-        [system[0], system[index]] = [system[index], system[0]]
-        return
-      }
-    }
-  }
+export function createSystem(line) {
+  system.push(line)
 }
 
-function findTheColumnWithMoreZeros() {
-  let quantityOfZerosByLine = []
-  
-  for (let line = 0; line < system.length; line++) {
-    let countZeros = 0
-    for (let col = 0; col < system[line].length; col++) {
-      if (system[line][col] === 0) {
-        countZeros++
-      }
-    }
-    quantityOfZerosByLine.push(countZeros)
-  }
-  return quantityOfZerosByLine
+export function clearSystem() {
+  system = []
+  results = []
 }
 
 function equation(lineUsed, lineMain) {
@@ -172,17 +136,14 @@ function findTheLinesToBeUsed(line, col) {
   return linesToBeUsed
 }
 
-function findTheColumnsToZero() {
+export function findTheColumnsToZero() {
   let count = 1
   for (let col = 0; col < count; col++) {
     for (let line = count; line < system.length; line++) {
       if (system[line][col] !== 0) {
-        console.log(`Valor a ser zerado: ${system[line][col]}`);
         calculate(system[line], col)
-        showSystem()
       }
     }
-
     if(count !== system.length)
     count++
   }
@@ -191,9 +152,7 @@ function findTheColumnsToZero() {
 
 function calculate(line, col) {
   let lines = findTheLinesToBeUsed(line, col)
-  console.log(lines);
   let lineUsed = findNumberOne(lines, col) ?? findTheNumberEasiest(lines, col, line)
-  console.log(`Usamos a linha:[${lineUsed}]`);
   equation(lineUsed, line)
 }
 
@@ -258,10 +217,9 @@ function showSystem() {
   system.forEach(row => console.log(row))
 }
 
-function showResults() {
+export function getResults() {
   replaceResult()
-  results.forEach(result => console.log(`${result.index} = ${result.value}`))
+  return results
 }
-showSystem()
-findTheColumnsToZero()
-showResults()
+
+clearSystem()

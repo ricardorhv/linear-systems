@@ -1,0 +1,249 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+
+body{
+    background-color: #FFD691;
+    color: #304D63;
+}
+
+/* TITLE */
+
+div.title{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 40px;
+}
+
+div.border{
+    width: 1222px;
+    height: 3px;
+    background-color: #ED8975;
+    margin-top: 1rem;
+}
+
+
+/* -------------------------------------- */
+
+/* SISTEM-AREA */
+
+div.container-sistem{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+div.sistem-header{
+    margin-bottom: 20px;
+}
+
+div.sistem{
+    width: fit-content;
+    height: fit-content;
+    background: rgba(170, 170, 170, 0.25);
+    border: 3px solid #ED8975;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(40px);
+    border-radius: 20px;
+    padding: 1rem 1.5rem;
+}
+
+div.container-btn{
+    display: flex;
+    width: 53rem;
+    justify-content: space-between;
+}
+
+input.sistem-input{
+    text-decoration: none;
+    border: none;
+    background: transparent;
+    width: 87px;
+    height: 45px;
+    border-bottom: 3px solid #304D63;
+    font-size: 1.3rem;
+    text-align: center;
+    outline: none;
+}
+
+.sistem-input::placeholder{
+    color: #304D63;
+}
+
+span.sistem-span{
+    font-size: 35px;
+}
+
+.system-x {
+    width: 100%;
+}
+
+/* -------------------------------------- */
+
+/* MODAL */
+div.container-modal{
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+
+div.content-modal{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 610px;
+    background-color: #304D63;
+    color: #D48153;
+    border-radius: 40px;
+}
+
+div.close{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    align-items: flex-start;
+    padding: 0 10px;
+}
+
+button.close-btn{
+    background: transparent;
+    color: #D48153;
+    height: fit-content;
+    box-shadow: none;
+    margin: 0 20px;
+    margin-top: 10px;
+}
+
+button.close-btn:active{
+    background: none;
+}
+
+
+div.sistem-results{
+    text-transform: uppercase;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    padding: 1.5rem 6rem;   
+}
+
+div.sistem-results span{
+    font-size: 40px;
+}
+
+div.sistem-results span.letter{
+    position: relative;
+}
+
+div.sistem-results .lower-number{
+    position: absolute;
+    left: 1.8rem;
+    bottom: -0.7rem;
+    font-size: 23px;
+    margin-right: 20px;
+}
+
+div.x{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+div.underline{
+    height: 90%;
+    border-bottom: 3px solid #D48153;
+    width: 87px;
+    text-align: center;
+    font-size: 2rem;
+}
+
+button.more-results-btn{
+    padding: 10px;
+    width: 262px;
+    height: 60px;
+    justify-self: flex-end;
+}
+
+
+/* -------------------------------------- */
+
+
+/* MORE-RESULTS MODAL PAGE */
+
+div.more-results{
+    text-align: center;
+    padding: 4rem;
+}
+
+div.more-results p{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.hidden{
+    display: none;
+}
+
+.higher {
+    height: 500px;
+    overflow-y: scroll;
+}
+
+/* -------------------------------------- */
+
+/* BUTTON */
+
+button{
+    color: #304D63;
+    height: 60px;
+    margin: 20px;
+    background-color: #ED8975;
+    text-decoration: none;
+    border: none;
+    font-size: 1.5rem;
+    border-radius: 20px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    transition: filter .2s ease-in-out;
+    -webkit-transition: filter .2s ease-in-out;
+    -moz-transition: filter .2s ease-in-out;
+    -ms-transition: filter .2s ease-in-out;
+    -o-transition: filter .2s ease-in-out;
+    -webkit-filter: drop-shadow();
+}
+
+button:active{
+    background-color: #a67065;
+}
+
+button:hover {
+    filter: brightness(0.8);
+    -webkit-filter: brightness(0.8);
+}
+
+.button-area-right button {
+    width: 232px;
+}
+
+.button-area-left button{
+    width: 101px;
+}
+
+/* -------------------------------------- */
